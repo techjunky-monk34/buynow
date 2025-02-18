@@ -28,6 +28,8 @@
         <input type="text" id="name" name="name"><br><br>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email"><br><br>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone"><br><br>
         <label for="message">Message:</label>
         <textarea id="message" name="message"></textarea><br><br>
         <!-- Add the submit button -->
@@ -37,29 +39,30 @@
 <!-- JavaScript code -->
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-    // Initialize EmailJS with your service ID and template ID
-    emailjs.init('git.web_contactservice1');
+    // Initialize EmailJS with your user ID
+    emailjs.init('TJ Monk'); // Replace 'TJ Monk' with your actual EmailJS user ID
 
     document.getElementById('contactForm').addEventListener('submit', (event) => {
         event.preventDefault();
         
         const name = document.querySelector('#name').value;
         const email = document.querySelector('#email').value;
+        const phone = document.querySelector('#phone').value;
         const message = document.querySelector('#message').value;
 
         const emailMessage = {
             to: 'techjunky.monk34@gmail.com', // Your recipient email address
             from_name: name, // Use the sender's name if available
-            text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
+            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage:\n${message}`,
         };
 
-        emailjs.send('git.web_contactservice1', 'template_contact.html' , emailMessage)
+        emailjs.send('git.web_contactservice1', 'template_contact1', emailMessage)
             .then(() => {
                 alert('Your message has been sent successfully!');
             })
             .catch((error) => {
                 console.error('There was an error sending the email:', error);
-                alert('There was an error sending your message. Please try again later.');
+                alert('Error, better luck next time ahh hah!');
             });
     });
 </script>
