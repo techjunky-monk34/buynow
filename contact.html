@@ -37,8 +37,8 @@
 <!-- JavaScript code -->
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-    // Initialize EmailJS with your user ID
-    emailjs.init('TJ Monk'); // Replace 'TJ-Monk' with your actual EmailJS user ID
+    // Initialize EmailJS with your service ID and template ID
+    emailjs.init('git.web_contactservice1');
 
     document.getElementById('contactForm').addEventListener('submit', (event) => {
         event.preventDefault();
@@ -48,12 +48,12 @@
         const message = document.querySelector('#message').value;
 
         const emailMessage = {
-            from_name: name,
-            from_email: email,
-            message: message
+            to: 'techjunky.monk34@gmail.com', // Your recipient email address
+            from_name: name, // Use the sender's name if available
+            text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
         };
 
-        emailjs.send("git.web_contactservice1", "template_contact.html", emailMessage)
+        emailjs.send('git.web_contactservice1', 'template_contact.html' , emailMessage)
             .then(() => {
                 alert('Your message has been sent successfully!');
             })
