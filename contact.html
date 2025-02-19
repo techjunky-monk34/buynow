@@ -39,8 +39,19 @@
 <!-- JavaScript code -->
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-    // Initialize EmailJS with your user ID
-    emailjs.init('TJ Monk'); // Replace 'TJ Monk' with your actual EmailJS user ID
+    // Initialize EmailJS with your public key and additional configuration
+    emailjs.init({
+        publicKey: 'rPFydxxTp7GnYL72d', // Replace with your actual public key
+        blockHeadless: true,
+        blockList: {
+            list: ['foo@emailjs.com', 'bar@emailjs.com'],
+            watchVariable: 'userEmail',
+        },
+        limitRate: {
+            id: 'app',
+            throttle: 10000,
+        },
+    });
 
     document.getElementById('contactForm').addEventListener('submit', (event) => {
         event.preventDefault();
