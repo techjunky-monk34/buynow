@@ -25,13 +25,13 @@
     <p>Get in touch with us:</p>
     <form id="contactForm">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
+        <input type="text" id="name" name="name" required><br><br>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br><br>
+        <input type="email" id="email" name="email" required><br><br>
         <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone"><br><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
         <label for="message">Message:</label>
-        <textarea id="message" name="message"></textarea><br><br>
+        <textarea id="message" name="message" required></textarea><br><br>
         <!-- Add the submit button -->
         <button type="submit">Send</button>
     </form>
@@ -39,19 +39,8 @@
 <!-- JavaScript code -->
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-    // Initialize EmailJS with your public key and additional configuration
-    emailjs.init({
-        publicKey: 'rPFydxxTp7GnYL72d', // Replace with your actual public key
-        blockHeadless: true,
-        blockList: {
-            list: ['foo@emailjs.com', 'bar@emailjs.com'],
-            watchVariable: 'userEmail',
-        },
-        limitRate: {
-            id: 'app',
-            throttle: 10000,
-        },
-    });
+    // Initialize EmailJS with your public key
+    emailjs.init('rPFydxxTp7GnYL72d'); // Replace with your actual public key
 
     document.getElementById('contactForm').addEventListener('submit', (event) => {
         event.preventDefault();
@@ -62,17 +51,18 @@
         const message = document.querySelector('#message').value;
 
         const emailMessage = {
-            to: 'techjunky.monk34@gmail.com', // Your recipient email address
-            from_name: name, // Use the sender's name if available
-            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage:\n${message}`,
+            from_name: name,
+            from_email: email,
+            phone: phone,
+            message: message
         };
 
-        emailjs.send('git.web_contactservice1', 'template_contact1', emailMessage)
+        emailjs.send('service_id', 'template_id', emailMessage)
             .then(() => {
                 alert('Your message has been sent successfully!');
             })
             .catch((error) => {
-                console.error('Error, better luck next time ahh hah!:', error);
+                console.error('Error:', error);
                 alert('Error, better luck next time ahh hah!');
             });
     });
