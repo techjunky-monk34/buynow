@@ -37,10 +37,13 @@
     </form>
 </main>
 <!-- JavaScript code -->
-<script src="https://api.emailjs.com/api/v1.0/email/send"></script>
-<script>
-    // Initialize EmailJS with your public key
-    emailjs.init('rPFydxxTp7GnYL72d'); // Replace with your actual public key
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "rPFydxxTp7GnYL72d", // Replace with your actual public key
+      });
+   })();
 
     document.getElementById('contactForm').addEventListener('submit', (event) => {
         event.preventDefault();
