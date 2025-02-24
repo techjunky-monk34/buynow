@@ -55,7 +55,7 @@
             message: message
         };
 
-        emailjs.send('git.web_contactservice1', 'template_contact1', emailMessage)
+        emailjs.send('default_service', 'template_contact1', emailMessage)
             .then(() => {
                 alert('Your message has been sent successfully!');
                 // Reload the page after successful submission
