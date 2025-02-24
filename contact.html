@@ -58,6 +58,8 @@
         emailjs.send('default_service', 'template_contact1', emailMessage)
             .then(() => {
                 alert('Your message has been sent successfully!');
+                // Reload the page after successful submission
+                window.location.reload();
             })
             .catch((error) => {
                 console.error('Error:', error);
