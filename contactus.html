@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <!-- Header -->
 <header>
-<nav>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="products.html">Products</a></li>
-<li><a href="features.html">Features</a></li>
-</ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="features.html">Features</a></li>
+        </ul>
+    </nav>
 </header>
 <!-- Main Content -->
 <main>
-<h1>Contact Us</h1>
-<p>Get in touch with us:</p>
-<form>
-<label for="name">Name:</label>
-<input type="text" id="name" name="name"><br><br>
-<label for="email">Email:</label>
-<input type="email" id="email" name="email"><br><br>
-<label for="message">Message:</label>
-<textarea id="message" name="message"></textarea><br><br>
-<!-- Add the submit button -->
-<button type="submit">Send</button>
-</form>
+    <h1>Contact Us</h1>
+    <p>Get in touch with us:</p>
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea><br><br>
+        <!-- Add the submit button -->
+        <button type="submit">Send</button>
+    </form>
 </main>
 <!-- JavaScript code -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-// Get the contact form elements
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const messageTextarea = document.querySelector('#message');
-// Add an event listener to the submit button
-document.querySelector('button[type="submit"]').addEventListener('click', (event) => {
-// Prevent the default form submission behavior
-event.preventDefault();
-// Get the form values
-const name = nameInput.value;
-const email = emailInput.value;
-const message = messageTextarea.value;
-// Create a new EmailJS message
-const usermessage = {
-to: 'techjunky.monk34@gmail.com', // Your recipient email address
-from: 'techjunky.monk34@gmail.com', // Your sender email address (optional)
-subject: 'Contact Form Submission',
-text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
-};
-// Send the message via EmailJS
-window.emailjs.send(git.web_contactservice1, ejs-test-mail-service, message);
-});
+    // Initialize EmailJS with your public key
+    emailjs.init('rPFydxxTp7GnYL72d'); // Replace with your actual public key
+
+    document.getElementById('contactForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const name = document.querySelector('#name').value;
+        const email = document.querySelector('#email').value;
+        const phone = document.querySelector('#phone').value;
+        const message = document.querySelector('#message').value;
+
+        const emailMessage = {
+            email_id: email,
+            message: message
+        };
+
+        emailjs.send('git.web_contactservice1', 'template_contact1', emailMessage)
+            .then(() => {
+                alert('Your message has been sent successfully!');
+                // Reload the page after successful submission
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error, better luck next time ahh hah!');
+            });
+    });
 </script>
 </body>
 </html>
