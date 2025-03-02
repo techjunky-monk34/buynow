@@ -14,11 +14,7 @@ nav ul {
     justify-content: space-between;
 }
 
-nav li {
-    margin-right: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #00698f;
+/* Add this new rule */
+.pre-line {
+    white-space: pre-line;
 }
