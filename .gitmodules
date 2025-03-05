@@ -1,0 +1,3 @@
+[submodule "buynow"]
+    path = buynow
+    url = https://github.com/techjunky-monk34/buynow

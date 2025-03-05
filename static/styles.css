@@ -22,3 +22,8 @@ nav a {
     text-decoration: none;
     color: #00698f;
 }
+
+/* Add this new rule */
+.pre-line {
+    white-space: pre-line;
+}
