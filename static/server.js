@@ -16,18 +16,9 @@ app.post('/test', (req, res) => {
     res.send('POST request received');
 });
 
-// Route to handle contact form submission
-app.post('/contact', (req, res) => {
-    const { name, email, phone, message } = req.body;
-
-    // Input validation
-    if (!name || !email || !phone || !message) {
-        return res.status(400).send('All fields are required.');
-    }
-
-    console.log(`Name: ${name}, Email: ${email}, Phone: ${phone}, Message: ${message}`);
-    res.send('Contact form submitted successfully');
-});
+// Use the contact route
+const contactRoute = require('../routes/contact');
+app.use(contactRoute);
 
 // Start the server
 app.listen(port, () => {
