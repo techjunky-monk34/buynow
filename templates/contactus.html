@@ -37,21 +37,11 @@
     </form>
 </main>
 <!-- JavaScript code -->
-<<<<<<< HEAD
 <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
     // Initialize EmailJS with your public key
     emailjs.init('rPFydxxTp7GnYL72d'); // Replace with your actual public key
-=======
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "rPFydxxTp7GnYL72d", // Replace with your actual public key
-      });
-   })();
->>>>>>> 4ec45cbbdc1905154777dc9b599a358f20b01aee
 
     document.getElementById('contactForm').addEventListener('submit', (event) => {
         event.preventDefault();
@@ -62,13 +52,7 @@
         const message = document.querySelector('#message').value;
 
         const emailMessage = {
-<<<<<<< HEAD
             email_id: email,
-=======
-            from_name: name,
-            from_email: email,
-            phone: phone,
->>>>>>> 4ec45cbbdc1905154777dc9b599a358f20b01aee
             message: message
         };
 
@@ -85,8 +69,4 @@
     });
 </script>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 4ec45cbbdc1905154777dc9b599a358f20b01aee
